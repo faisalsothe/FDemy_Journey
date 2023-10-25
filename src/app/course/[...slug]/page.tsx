@@ -48,20 +48,15 @@ const CoursePage = async ({params:{slug}}: Props) => {
     const prevChapter=unit.chapters[chapterIndex-1];
 
   return (
-    <div>
-        <CourseSideBar course={course} currentChapterId={chapter.id} />
-        <div>
-            <div className='ml-[400px] px-8'>
-                <div className='flex'>
-                    <MainVideoSummary 
-                    chapter={chapter} 
-                    chapterIndex={chapterIndex} 
-                    unit={unit} 
-                    unitIndex={unitIndex}/>
-                    <QuizCards chapter={chapter}/>
-                </div>
-                <div className='flex-[1] h-[1px] mt-4 text-gray-500 bg-gray-500' />
-                <div className='flex pb-8'>
+    <div className='md:mb-80'>
+    <CourseSideBar course={course} currentChapterId={chapter.id} />
+    <div className='ml-4 sm:ml-[400px] px-8'>
+      <div className='flex flex-col sm:flex-row'>
+        <MainVideoSummary chapter={chapter} chapterIndex={chapterIndex} unit={unit} unitIndex={unitIndex} />
+        <QuizCards chapter={chapter} />
+      </div>
+      <div className='flex-[1] h-[1px] mt-4 text-gray-500 bg-gray-500' />
+      <div className='flex pb-8'>
                     {prevChapter && (
                         <Link href={`/course/${course.id}/${unitIndex}/${chapterIndex-1}`} className='flex mt-4 mr-auto w-fit'>
                             <div className='flex items-center'>
@@ -95,7 +90,6 @@ const CoursePage = async ({params:{slug}}: Props) => {
                 </div>
             </div>
         </div>
-    </div>
   )
 }
 
